@@ -1,0 +1,32 @@
+<template>
+  <require from="./drop-down"></require>
+  <require from="./name-tag.html"></require>
+
+  <drop-down items.bind="people" selected-item.bind="selectedPerson" display-expression="firstName">
+  </drop-down>
+
+  <br>
+
+  <drop-down items.bind="people" selected-item.bind="selectedPerson" display-expression="firstName">
+    <template replace-part="selected-item-template">
+      <span css="color: ${favoriteColor}">${firstName} ${lastName}</span>
+    </template>
+  </drop-down>
+
+  <br>
+
+  <drop-down items.bind="people" selected-item.bind="selectedPerson">
+    <selected-item-template>
+      Hello, my name is
+      <span css="color: ${favoriteColor}">
+        ${firstName}
+      </span>!
+    </selected-item-template>
+    <list-item-template>
+      <name-tag color.bind="favoriteColor">
+        ${firstName} ${lastName}
+      </name-tag>
+    </list-item-template>
+  </drop-down>
+
+</template>
